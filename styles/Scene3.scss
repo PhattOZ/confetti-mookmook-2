@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css?family=Comfortaa:700|Roboto:900|Russo+One");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+#wish h1,
+#wish h2,
+#wish h3 {
+  animation: appear 2s;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#thankyou {
+  background-color: #f9a;
+  padding: 30vh 0 20vh 0;
+  text-align: center;
+}
+
+#text p {
+  width: 45px;
+  display: inline-block;
+  font-size: 0px;
+  font-family: "Russo One";
+  font-weight: 900;
+  color: #fff;
+}
+
+@function makelongshadow($color) {
+  $val: 0px 0px $color;
+  @for $i from 1 through 300 {
+    $val: #{$val}, #{$i}px #{$i}px #{$color};
+  }
+  @return $val;
+}
+
+$color: #aeb;
+
+@for $i from 1 to 33 {
+  p:nth-child(#{$i}) {
+    text-shadow: makelongshadow(adjust-hue($color, $i * 30));
+    animation: showup 5s infinite $i * 0.2s;
+  }
+}
+
+@keyframes showup {
+  0% {
+    font-size: 0px;
+    transform: rotate(90deg);
+  }
+  5% {
+    font-size: 60px;
+  }
+  10% {
+    font-size: 66px;
+    transform: rotate(0deg);
+  }
+  60% {
+    font-size: 66px;
+    opacity: 1;
+  }
+  71% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    font-size: 66px;
+    transform: rotate(0deg);
+  }
+}
